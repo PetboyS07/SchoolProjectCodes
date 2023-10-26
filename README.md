@@ -6,6 +6,6 @@ This repo is only to upload and share my codes that a programmed for school proj
 
 
 # Different codes:
-
+Below is a list with the different project that can be found in this repo.
 ## Unilogger
 Codes that I programmed for my internship.
