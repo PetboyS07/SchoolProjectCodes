@@ -1,0 +1,3 @@
+/home/user/repos/intern_patrick_schuurman/uniLoggerMain/build/CMakeFiles/uniLog.dir
+/home/user/repos/intern_patrick_schuurman/uniLoggerMain/build/CMakeFiles/edit_cache.dir
+/home/user/repos/intern_patrick_schuurman/uniLoggerMain/build/CMakeFiles/rebuild_cache.dir

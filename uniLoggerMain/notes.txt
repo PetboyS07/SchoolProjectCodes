@@ -1,0 +1,25 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///    Notes   /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+1. Functions to add:
+     - unilog.filterPointcloud  (the different functions for filtering the data)
+     - unilog.showPointcloud    (maybe parameters to specify wich pointcloud u want to show?)
+    
+     
+2. To do list:
+     x - Clean up the code.
+     x - Add comments to funcions.
+     x - Add the side functions
+     x - Add sensordata to the recordviewer (Code that shows how find in: trackPosition())
+     x - Add sensordata to the playback viewer (Code that shows how find in: trackPosition())
+     - Improve svoToPcl()
+     - Add sensordata to svoToPcl() (Code that shows how find in: trackPosition())
+     - create a function that filters the pointcloud
+    
+
+3. -- 
+
+
+- assenstelsel transformeren
+eigen3
