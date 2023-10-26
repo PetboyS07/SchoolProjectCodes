@@ -8,4 +8,4 @@ This repo is only to upload and share my codes that a programmed for school proj
 # Different codes:
 
 ## Unilogger
-    - Codes that I programmed for my internship.
+Codes that I programmed for my internship.
