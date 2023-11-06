@@ -5,8 +5,10 @@
 // Date:        25-09-2023
 // Project:     Unilog
 // Filename:    cameraControl.cpp
-// Discription: This is a sourche file for the cameraControl class.
-//              In here u find a serie of functions for to relize a application for the Unilog project.
+// Changed:     06-11-2023
+//
+// Discription: this is a sourche file for the cameraControl class.
+//              In here u find a serie of functions to relize a application for the unilog project.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +66,7 @@ shared_ptr<pcl::visualization::PCLVisualizer> createRGBVisualizer(pcl::PointClou
 inline float convertColor(float colorIn);
 
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///     Setup and Init     //////////////////////////////////////////////////////////////////////////////////
 
@@ -78,7 +81,7 @@ void cameraControl::help(void)
     cout << endl;
     cout << "[Usage] In function help." << endl;
     cout << endl;
-    cout << "[Usage] Command format: ./filename  --function  svoPath" << endl;
+    cout << "[Usage] Command format: ./filename  --function  PathToFile" << endl;
     cout << endl;
     cout << "[Usage] Main Functions: " << endl;
     cout << "[Usage] Type '-r' or '--record' to record svo. (svoOutputPath should be given)" << endl;
@@ -88,7 +91,8 @@ void cameraControl::help(void)
     cout << "[Usage] Side Functions: " << endl;
     cout << "[Usage] Type '-h' or '--help' for a list of commands." << endl;
     cout << "[Usage] Type '-tp' or '--trackPosition to track ZED camera." << endl;    
-    cout << "[Usage] Type '-sm' or '--spatialMapping to start spatial mapping." << endl;    
+    cout << "[Usage] Type '-sm' or '--spatialMapping to start spatial mapping." << endl;
+    cout << "[Usage] Type '-tw' or '--testWindow to start test window." << endl;    
     cout << endl;
     cout << "[Usage] Get Information Functions: " << endl;
     cout << "[Usage] Type '-gs' or '--getSerialnumber' to get zed serialnumber." << endl;
@@ -217,10 +221,12 @@ bool cameraControl::recordSVO(void)
     cv::Mat live_image_ocv = slMat2cvMat(live_image);
 
     // Setup for Opencv Viewer.
-    auto textColor = CV_RGB(255, 255, 255); //wit
+    auto textColor = CV_RGB(255, 255, 255); //white
+    auto textBackgroundColor = CV_RGB(0, 0, 0); //black
     auto textFont = cv::FONT_HERSHEY_TRIPLEX;
     auto textScaler = 0.7;
     auto textTickness = 1;
+    auto textBackgroundTickness = textTickness + 1;
     auto lineType = cv::LINE_AA;
     auto textPosMid = (low_resolution.width/2)+10;
     
@@ -259,13 +265,22 @@ bool cameraControl::recordSVO(void)
             // Get the side by side image
             retrieveImage(live_image, VIEW::SIDE_BY_SIDE, MEM::CPU, low_resolution);
             
+            // Draw Mid line to split camera feed
+            cv::line(live_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textBackgroundColor,3); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            cv::line(live_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textColor,2); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            
             // Create text input for resolution params
             string dispWindowResolution = "Window Resolution: " + std::to_string(low_resolution.height) + " X " + std::to_string(low_resolution.width);
-            string dispSVOResolution = "SVO Resolution: " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+            string dispSVOResolution =    "SVO Resolution:    " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+            cv::putText(live_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(live_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
             cv::putText(live_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
             cv::putText(live_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
 
             // create text input for keybinds
+            cv::putText(live_image_ocv,"Press 'b' to begin SVO recording", cv::Point(10, 25),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,"Press 'q' to exit...", cv::Point(10, 75),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(live_image_ocv,"Press 'b' to begin SVO recording", cv::Point(10, 25),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,"Press 'q' to exit...", cv::Point(10, 75),textFont,textScaler,textColor,textTickness, lineType);
@@ -278,6 +293,10 @@ bool cameraControl::recordSVO(void)
             string dispTranslation = "Translation: " + string(textTranslation);
             string dispOrientation = "Orientation: " + string(textOrientation);
             string dispRotation =    "Rotation:    " + string(textRotation);
+            cv::putText(live_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispRotation, cv::Point(10, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(live_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -303,6 +322,12 @@ bool cameraControl::recordSVO(void)
             string dispImuAngularVelocity = "Angular Velocity: " + string(textImuAngularVelocity);
             string dispImuTemperature =     "Temperature:      " + to_string(textTemperatureImu);
             string dispAltitude = "Altitude:    " + to_string(textImuAltitude);
+            cv::putText(live_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(live_image_ocv,dispAltitude, cv::Point(10, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(live_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(live_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -347,18 +372,27 @@ bool cameraControl::recordSVO(void)
                 // Get the side by side image
                 retrieveImage(live_image, VIEW::SIDE_BY_SIDE, MEM::CPU, low_resolution);
                 
+                // Draw Mid line to split camera feed
+                cv::line(live_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textBackgroundColor,3); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+                cv::line(live_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textColor,2); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            
                 // Create text input for resolution params
                 string dispWindowResolution = "Window Resolution: " + std::to_string(low_resolution.height) + " X " + std::to_string(low_resolution.width);
-                string dispSVOResolution = "SVO Resolution: " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+                string dispSVOResolution =    "SVO Resolution:    " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+                cv::putText(live_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(live_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
                 cv::putText(live_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
                 cv::putText(live_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
             
                 // create text input for keybinds
+                cv::putText(live_image_ocv,"Recording...",cv::Point(10, 25),textFont,textScaler,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(live_image_ocv,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
                 cv::putText(live_image_ocv,"Recording...",cv::Point(10, 25),textFont,textScaler,textColor, textTickness, lineType); //target image //text //top-left position //font color
                 cv::putText(live_image_ocv,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
                 
                 // create text input for frames recorded
                 string dispFramesRecorded = "Frame # " + std::to_string(framesRecorded);
+                cv::putText(live_image_ocv,dispFramesRecorded, cv::Point(textPosMid, 25),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
                 cv::putText(live_image_ocv,dispFramesRecorded, cv::Point(textPosMid, 25),textFont,textScaler,textColor,textTickness, lineType);
                 
                 // Create text input for position data.   
@@ -369,6 +403,10 @@ bool cameraControl::recordSVO(void)
                 string dispTranslation = "Translation: " + string(textTranslation);
                 string dispOrientation = "Orientation: " + string(textOrientation);
                 string dispRotation =    "Rotation:    " + string(textRotation);
+                cv::putText(live_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispRotation, cv::Point(10, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
                 cv::putText(live_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
                 cv::putText(live_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
                 cv::putText(live_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -394,6 +432,12 @@ bool cameraControl::recordSVO(void)
                 string dispImuAngularVelocity = "Angular Velocity: " + string(textImuAngularVelocity);
                 string dispImuTemperature =     "Temperature:      " + to_string(textTemperatureImu);
                 string dispAltitude = "Altitude:    " + to_string(textImuAltitude);
+                cv::putText(live_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(live_image_ocv,dispAltitude, cv::Point(10, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
                 cv::putText(live_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
                 cv::putText(live_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
                 cv::putText(live_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -439,6 +483,7 @@ bool cameraControl::recordSVO(void)
         }
     }
     disablePositionalTracking();
+    cv::destroyAllWindows();
     cout << endl;
     return true;
 }
@@ -459,11 +504,13 @@ bool cameraControl::playbackSVO(void)
     Mat svo_image(low_resolution, MAT_TYPE::U8_C4, MEM::CPU);
     cv::Mat svo_image_ocv = slMat2cvMat(svo_image);
 
-    // Setup opencv
-    auto textColor = CV_RGB(255, 255, 255); //wit
+    // Setup for Opencv Viewer.
+    auto textColor = CV_RGB(255, 255, 255); //white
+    auto textBackgroundColor = CV_RGB(0, 0, 0); //black
     auto textFont = cv::FONT_HERSHEY_TRIPLEX;
     auto textScaler = 0.7;
     auto textTickness = 1;
+    auto textBackgroundTickness = textTickness + 1;
     auto lineType = cv::LINE_AA;
     auto textPosMid = (low_resolution.width/2)+10;
     
@@ -505,14 +552,25 @@ bool cameraControl::playbackSVO(void)
             retrieveImage(svo_image, VIEW::SIDE_BY_SIDE, MEM::CPU, low_resolution); 
             int svo_position = getSVOPosition();
             svoFrameCounter++;
-
+            
+            // Draw Mid line to split camera feed
+            cv::line(svo_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textBackgroundColor,3); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            cv::line(svo_image_ocv,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textColor,2); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            
             // create text input in viewer for resolution
             string dispWindowResolution = "Window Resolution: " + std::to_string(low_resolution.height) + " X " + std::to_string(low_resolution.width);
-            string dispSVOResolution = "SVO Resolution: " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+            string dispSVOResolution =    "SVO Resolution:    " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+            cv::putText(svo_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(svo_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color  
             cv::putText(svo_image_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
             cv::putText(svo_image_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
                 
             // create text input in viewer for keybinds
+            cv::putText(svo_image_ocv,"Playing SVO...",cv::Point(10, 25),textFont,textScaler,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(svo_image_ocv,"Press 's' to save SVO image as a PNG", cv::Point(10, 50),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,"Press 'f' to jump forward in the video", cv::Point(10, 75),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,"Press 'b' to jump backward in the video", cv::Point(10, 100),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,"Press 'q' to exit", cv::Point(10, 125),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(svo_image_ocv,"Playing SVO...",cv::Point(10, 25),textFont,textScaler,textColor, textTickness, lineType); //target image //text //top-left position //font color
             cv::putText(svo_image_ocv,"Press 's' to save SVO image as a PNG", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(svo_image_ocv,"Press 'f' to jump forward in the video", cv::Point(10, 75),textFont,textScaler,textColor,textTickness, lineType);
@@ -521,6 +579,7 @@ bool cameraControl::playbackSVO(void)
                 
             // create text input in viewer for frame counter
             string dispFramesPlayed = "Frame # " + std::to_string(svo_position) +  " / " + std::to_string(nb_frames);
+            cv::putText(svo_image_ocv,dispFramesPlayed, cv::Point(textPosMid, 25),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(svo_image_ocv,dispFramesPlayed, cv::Point(textPosMid, 25),textFont,textScaler,textColor,textTickness, lineType);
             
             // Create text input for position data.   
@@ -531,6 +590,10 @@ bool cameraControl::playbackSVO(void)
             string dispTranslation = "Translation: " + string(textTranslation);
             string dispOrientation = "Orientation: " + string(textOrientation);
             string dispRotation =    "Rotation:    " + string(textRotation);
+            cv::putText(svo_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispRotation, cv::Point(10, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
             cv::putText(svo_image_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(svo_image_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(svo_image_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -556,6 +619,12 @@ bool cameraControl::playbackSVO(void)
             string dispImuAngularVelocity = "Angular Velocity: " + string(textImuAngularVelocity);
             string dispImuTemperature =     "Temperature:      " + to_string(textTemperatureImu);
             string dispAltitude = "Altitude:    " + to_string(textImuAltitude);
+            cv::putText(svo_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(svo_image_ocv,dispAltitude, cv::Point(10, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType); 
             cv::putText(svo_image_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(svo_image_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
             cv::putText(svo_image_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
@@ -572,18 +641,30 @@ bool cameraControl::playbackSVO(void)
             switch (key) 
             {
             case 's': // saves current svo frame
-                svo_image.write(("[Camera Playback] capture_" + to_string(svo_position) + ".png").c_str());
+            {
+                string name;
+                cout << endl;
+                cout << "[Camera Playback] file name: ";
+                cin >> name;
+                svo_image.write(("../../screenshots/capture_" + name + to_string(svo_position) + ".png").c_str());
+                cout << "[Camera Playback] Screenshot saved." << endl;
+                cout << "[Camera Playback] please wait." << endl;
                 break;
+            }
             case 'f': // forwards svo frame
+            {
                 setSVOPosition(svo_position + svo_frame_rate);
                 break;
+            }
             case 'b': // backwards svo frame
+            {
                 setSVOPosition(svo_position - svo_frame_rate);
                 break;
             }
+            }
 
             // generate ProgressBar
-            ProgressBar((float)(svo_position / (float)nb_frames), 30);
+            //ProgressBar((float)(svo_position / (float)nb_frames), 30);
         }
         else if (returned_state == sl::ERROR_CODE::END_OF_SVOFILE_REACHED) // when end of svo file is reached.
         {
@@ -598,6 +679,7 @@ bool cameraControl::playbackSVO(void)
         }
     }
     disablePositionalTracking();
+    cv::destroyAllWindows();
     return true; 
 }
 
@@ -1023,23 +1105,25 @@ bool cameraControl::testWindow(void)
     Resolution low_resolution(min(720, (int)resolution.width) * 2, min(404, (int)resolution.height));
     Mat testWindow(low_resolution, MAT_TYPE::U8_C4, MEM::CPU);
     cv::Mat testWindow_ocv = slMat2cvMat(testWindow);
+    cv::Mat extraWindow(404,1440, CV_8UC3, CV_RGB(50, 50, 50)); //green tint
+    
+    // Define Viewers and what to view
+    cv::Mat cameraWindow = testWindow_ocv;
+    cv::Mat sensorWindow = extraWindow;
 
+    // Keybinds.
+    char key = ' ';
+    
     // Setup for Opencv Viewer.
-    auto textColor = CV_RGB(255, 255, 255); //wit
+    auto textColor = CV_RGB(255, 255, 255); //white
+    auto textBackgroundColor = CV_RGB(0, 0, 0); //black
     auto textFont = cv::FONT_HERSHEY_TRIPLEX;
     auto textScaler = 0.7;
     auto textTickness = 1;
+    auto textBackgroundTickness = textTickness + 1;
     auto lineType = cv::LINE_AA;
     auto textPosMid = (low_resolution.width/2)+10;
-    
-    // Keybinds.
-    char key = ' ';
-    //cout << "[Test Window] Keybinds: " << endl;
-    //cout << "[Test Window] Press 'b' to begin SVO recording" << endl;
-    //cout << "[Test Window] Press 's' to stop SVO recording" << endl;
-    //cout << "[Test Window] Press 'q' to exit..." << endl;
-    //cout << endl;
-    
+
     // Create text for GUI
     char textTranslation[MAX_CHAR];
     char textOrientation[MAX_CHAR];
@@ -1051,10 +1135,6 @@ bool cameraControl::testWindow(void)
     float textTemperatureImu;
     Timestamp lastImuTs = 0;
     Timestamp lastBarometerTs = 0;
-
-
-
-            
 
     // setup loop.
     int frames = 0;
@@ -1069,17 +1149,27 @@ bool cameraControl::testWindow(void)
         {
             // Get the side by side image
             retrieveImage(testWindow, VIEW::SIDE_BY_SIDE, MEM::CPU, low_resolution);
+            sensorWindow = extraWindow;
+
+            // Draw Mid line to split camera feed
+            cv::line(cameraWindow,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textBackgroundColor,3); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            cv::line(cameraWindow,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textColor,2); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
             
             // Create text input for resolution params
             string dispWindowResolution = "Window Resolution: " + std::to_string(low_resolution.height) + " X " + std::to_string(low_resolution.width);
-            string dispCameraResolution = "Camera Resolution: " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
-            cv::putText(testWindow_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
-            cv::putText(testWindow_ocv,dispCameraResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
+            string dispCameraResolution = "SVO Resolution:    " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+            cv::putText(cameraWindow,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(cameraWindow,dispCameraResolution,cv::Point(1150, 45),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(cameraWindow,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
+            cv::putText(cameraWindow,dispCameraResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
             
             // create text input for keybinds
-            cv::putText(testWindow_ocv,"Press 'b' to begin SVO recording", cv::Point(10, 25),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,"Press 'q' to exit...", cv::Point(10, 75),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(cameraWindow,"Press 'b' to begin SVO recording", cv::Point(10, 25),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(cameraWindow,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(cameraWindow,"Press 'q' to exit...", cv::Point(10, 75),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(cameraWindow,"Press 'b' to begin SVO recording", cv::Point(10, 25),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(cameraWindow,"Press 's' to stop SVO recording", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(cameraWindow,"Press 'q' to exit...", cv::Point(10, 75),textFont,textScaler,textColor,textTickness, lineType);
 
             // Create text input for position data.   
             getPosition(zedPose, REFERENCE_FRAME::WORLD); // Get the pose of the left eye of the camera with reference to the world frame  
@@ -1089,10 +1179,14 @@ bool cameraControl::testWindow(void)
             string dispTranslation = "Translation: " + string(textTranslation);
             string dispOrientation = "Orientation: " + string(textOrientation);
             string dispRotation =    "Rotation:    " + string(textRotation);
-            cv::putText(testWindow_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispRotation, cv::Point(10, 375),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispTranslation, cv::Point(10, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispOrientation, cv::Point(10, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispRotation, cv::Point(10, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispRotation, cv::Point(10, 375),textFont,textScaler,textColor,textTickness, lineType);
 
             // Create text input for IMU data.
             getSensorsData(sensorData, TIME_REFERENCE::IMAGE); // Get IMU data at the time the IMAGE was captured      
@@ -1114,18 +1208,28 @@ bool cameraControl::testWindow(void)
             string dispImuAngularVelocity = "Angular Velocity: " + string(textImuAngularVelocity);
             string dispImuTemperature =     "Temperature:      " + to_string(textTemperatureImu);
             string dispAltitude = "Altitude:    " + to_string(textImuAltitude);
-            cv::putText(testWindow_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textColor,textTickness, lineType);
-            cv::putText(testWindow_ocv,dispAltitude, cv::Point(10, 400),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,dispAltitude, cv::Point(10, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+            cv::putText(sensorWindow,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textColor,textTickness, lineType);
+            cv::putText(sensorWindow,dispAltitude, cv::Point(10, 400),textFont,textScaler,textColor,textTickness, lineType);
 
+            // Extra viewer
+            cv::namedWindow("Sensor Window");
+            cv::moveWindow("Sensor Window", 240,150); // move and fix viewer on the screen
+            cv::imshow("Sensor Window", sensorWindow); // show the viewer
 
-            // Viewer
-            cv::namedWindow("Test Window"); // name the window
-            cv::moveWindow("Test Window", 240,600); // move and fix viewer on the screen
-            cv::imshow("Test Window", testWindow_ocv); // show the viewer
+            // Test Viewer
+            cv::namedWindow("Camera Window"); // name the window
+            cv::moveWindow("Camera Window", 240,600); // move and fix viewer on the screen
+            cv::imshow("Camera Window", cameraWindow); // show the viewer
             key = cv::waitKey(10); // wait for a keypres
 
             if (key == 'b') 
@@ -1144,20 +1248,30 @@ bool cameraControl::testWindow(void)
             {
                 // Get the side by side image
                 retrieveImage(testWindow, VIEW::SIDE_BY_SIDE, MEM::CPU, low_resolution);
-                
+                sensorWindow = extraWindow;
+
+                // Draw Mid line
+                cv::line(cameraWindow,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textBackgroundColor,3); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+                cv::line(cameraWindow,cv::Point((low_resolution.width/2),0),cv::Point(low_resolution.width/2,low_resolution.height),textColor,2); // params: image, starting coordinates, ending coordinates, color, line width, line type: default cv.LINE_8
+            
                 // Create text input for resolution params
                 string dispWindowResolution = "Window Resolution: " + std::to_string(low_resolution.height) + " X " + std::to_string(low_resolution.width);
-                string dispSVOResolution = "SVO Resolution: " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
-                cv::putText(testWindow_ocv,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
-                cv::putText(testWindow_ocv,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
+                string dispSVOResolution =    "SVO Resolution:    " + std::to_string(resolution.height) + " X " + std::to_string(resolution.width);
+                cv::putText(cameraWindow,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(cameraWindow,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(cameraWindow,dispWindowResolution,cv::Point(1150, 20),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(cameraWindow,dispSVOResolution,cv::Point(1150, 45),textFont,0.5,textColor, textTickness, lineType); //target image //text //top-left position //font color
             
                 // create text input for keybinds
-                cv::putText(testWindow_ocv,"begon...",cv::Point(10, 25),textFont,textScaler,textColor, textTickness, lineType); //target image //text //top-left position //font color
-                cv::putText(testWindow_ocv,"Press 's' to stop", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(cameraWindow,"begon...",cv::Point(10, 25),textFont,textScaler,textBackgroundColor, textBackgroundTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(cameraWindow,"Press 's' to stop", cv::Point(10, 50),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(cameraWindow,"begon...",cv::Point(10, 25),textFont,textScaler,textColor, textTickness, lineType); //target image //text //top-left position //font color
+                cv::putText(cameraWindow,"Press 's' to stop", cv::Point(10, 50),textFont,textScaler,textColor,textTickness, lineType);
                 
                 // create text input for frames recorded
                 string dispFrames = "Frame # " + std::to_string(frames);
-                cv::putText(testWindow_ocv,dispFrames, cv::Point(textPosMid, 20),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(cameraWindow,dispFrames, cv::Point(textPosMid, 20),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(cameraWindow,dispFrames, cv::Point(textPosMid, 20),textFont,textScaler,textColor,textTickness, lineType);
 
                 // Create text input for position data.   
                 getPosition(zedPose, REFERENCE_FRAME::WORLD); // Get the pose of the left eye of the camera with reference to the world frame  
@@ -1167,10 +1281,14 @@ bool cameraControl::testWindow(void)
                 string dispTranslation = "Translation: " + string(textTranslation);
                 string dispOrientation = "Orientation: " + string(textOrientation);
                 string dispRotation =    "Rotation:    " + string(textRotation);
-                cv::putText(testWindow_ocv,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispRotation, cv::Point(10, 375),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispTranslation, cv::Point(10, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispOrientation, cv::Point(10, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispRotation, cv::Point(10, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,"Camera Pose:", cv::Point(10, 300),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispTranslation, cv::Point(10, 325),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispOrientation, cv::Point(10, 350),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispRotation, cv::Point(10, 375),textFont,textScaler,textColor,textTickness, lineType);
 
                 // Create text input for IMU data.
                 getSensorsData(sensorData, TIME_REFERENCE::IMAGE); // Get IMU data at the time the IMAGE was captured      
@@ -1192,15 +1310,22 @@ bool cameraControl::testWindow(void)
                 string dispImuAngularVelocity = "Angular Velocity: " + string(textImuAngularVelocity);
                 string dispImuTemperature =     "Temperature:      " + to_string(textTemperatureImu);
                 string dispAltitude = "Altitude:    " + to_string(textImuAltitude);
-                cv::putText(testWindow_ocv,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textColor,textTickness, lineType);
-                cv::putText(testWindow_ocv,dispAltitude, cv::Point(10, 400),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,dispAltitude, cv::Point(10, 400),textFont,textScaler,textBackgroundColor,textBackgroundTickness, lineType);
+                cv::putText(sensorWindow,"IMU Data:", cv::Point(textPosMid, 300),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispImuOrientation, cv::Point(textPosMid, 325),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispImuAcceleration, cv::Point(textPosMid, 350),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispImuAngularVelocity, cv::Point(textPosMid, 375),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispImuTemperature, cv::Point(textPosMid, 400),textFont,textScaler,textColor,textTickness, lineType);
+                cv::putText(sensorWindow,dispAltitude, cv::Point(10, 400),textFont,textScaler,textColor,textTickness, lineType);
                 
                 // Display live stream
-                cv::imshow("Test Window", testWindow_ocv);
+                cv::imshow("Camera Window", cameraWindow);
+                cv::imshow("Sensor Window", sensorWindow);
                 key = cv::waitKey(10);
 
                 if (key == 's') // when "s" stop recording.
@@ -1229,6 +1354,8 @@ bool cameraControl::testWindow(void)
         }
     }
     disablePositionalTracking();
+    cv::destroyAllWindows();
+
     cout << endl;
     return true;
 }

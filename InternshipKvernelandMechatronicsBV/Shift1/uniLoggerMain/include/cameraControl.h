@@ -1,5 +1,7 @@
 #ifndef CAMERA_CONTROL_H
-#define CAMERA_CONTROL_H
+#define CAMERA_CONTROL_
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///     Script Information     //////////////////////////////////////////////////////////////////////////////
@@ -8,6 +10,7 @@
 // Date:        25-09-2023
 // Project:     Unilog
 // Filename:    cameraControl.h
+// Changed:     30-10-2023
 // Discription: This is a headerfile for the cameraControl class tha inheritens from the ZED SDK Camera class.
 //              It controls a serie functions to create a application for the Unilog project.
 
