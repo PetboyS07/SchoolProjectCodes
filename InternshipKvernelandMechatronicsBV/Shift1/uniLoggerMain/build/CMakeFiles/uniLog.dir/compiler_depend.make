@@ -1967,7 +1967,133 @@ CMakeFiles/uniLog.dir/src/cameraControl.cpp.o: /home/user/repos/intern_patrick_s
   /usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h \
   /usr/include/aarch64-linux-gnu/bits/sigthread.h \
   /usr/local/include/GLFW/glfw3.h \
-  /usr/local/cuda/include/cuda_gl_interop.h
+  /usr/local/cuda/include/cuda_gl_interop.h \
+  /usr/local/include/pcl-1.12/pcl/io/pcd_io.h \
+  /usr/local/include/pcl-1.12/pcl/io/file_io.h \
+  /usr/include/boost/numeric/conversion/cast.hpp \
+  /usr/include/boost/numeric/conversion/converter.hpp \
+  /usr/include/boost/numeric/conversion/conversion_traits.hpp \
+  /usr/include/boost/numeric/conversion/detail/conversion_traits.hpp \
+  /usr/include/boost/numeric/conversion/detail/meta.hpp \
+  /usr/include/boost/mpl/equal_to.hpp \
+  /usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp \
+  /usr/include/boost/numeric/conversion/detail/int_float_mixture.hpp \
+  /usr/include/boost/numeric/conversion/int_float_mixture_enum.hpp \
+  /usr/include/boost/numeric/conversion/detail/sign_mixture.hpp \
+  /usr/include/boost/numeric/conversion/sign_mixture_enum.hpp \
+  /usr/include/boost/numeric/conversion/detail/udt_builtin_mixture.hpp \
+  /usr/include/boost/numeric/conversion/udt_builtin_mixture_enum.hpp \
+  /usr/include/boost/numeric/conversion/detail/is_subranged.hpp \
+  /usr/include/boost/mpl/multiplies.hpp \
+  /usr/include/boost/mpl/times.hpp \
+  /usr/include/boost/mpl/aux_/preprocessed/gcc/times.hpp \
+  /usr/include/boost/numeric/conversion/converter_policies.hpp \
+  /usr/include/boost/config/no_tr1/cmath.hpp \
+  /usr/include/boost/numeric/conversion/detail/converter.hpp \
+  /usr/include/boost/numeric/conversion/bounds.hpp \
+  /usr/include/boost/numeric/conversion/detail/bounds.hpp \
+  /usr/include/boost/numeric/conversion/numeric_cast_traits.hpp \
+  /usr/include/boost/numeric/conversion/detail/numeric_cast_traits.hpp \
+  /usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp \
+  /usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp \
+  /usr/include/boost/algorithm/string/predicate.hpp \
+  /usr/include/boost/algorithm/string/config.hpp \
+  /usr/include/boost/range/as_literal.hpp \
+  /usr/include/boost/range/detail/str_types.hpp \
+  /usr/include/boost/algorithm/string/compare.hpp \
+  /usr/include/boost/algorithm/string/find.hpp \
+  /usr/include/boost/algorithm/string/finder.hpp \
+  /usr/include/boost/algorithm/string/constants.hpp \
+  /usr/include/boost/algorithm/string/detail/finder.hpp \
+  /usr/include/boost/algorithm/string/detail/predicate.hpp \
+  /usr/include/boost/interprocess/sync/file_lock.hpp \
+  /usr/include/boost/interprocess/detail/config_begin.hpp \
+  /usr/include/boost/interprocess/detail/workaround.hpp \
+  /usr/include/boost/interprocess/exceptions.hpp \
+  /usr/include/boost/interprocess/errors.hpp \
+  /usr/include/boost/interprocess/detail/config_end.hpp \
+  /usr/include/boost/interprocess/detail/os_file_functions.hpp \
+  /usr/include/boost/interprocess/permissions.hpp \
+  /usr/include/boost/interprocess/interprocess_fwd.hpp \
+  /usr/include/boost/interprocess/detail/std_fwd.hpp \
+  /usr/include/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/linux/falloc.h \
+  /usr/include/aarch64-linux-gnu/bits/stat.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl2.h \
+  /usr/include/aarch64-linux-gnu/sys/stat.h \
+  /usr/include/dirent.h \
+  /usr/include/aarch64-linux-gnu/bits/dirent.h \
+  /usr/include/boost/interprocess/detail/os_thread_functions.hpp \
+  /usr/include/boost/interprocess/streams/bufferstream.hpp \
+  /usr/include/boost/interprocess/detail/posix_time_types_wrk.hpp \
+  /usr/include/boost/date_time/microsec_time_clock.hpp \
+  /usr/include/boost/date_time/compiler_config.hpp \
+  /usr/include/boost/date_time/locale_config.hpp \
+  /usr/include/boost/date_time/c_time.hpp \
+  /usr/include/boost/date_time/time_clock.hpp \
+  /usr/include/boost/date_time/filetime_functions.hpp \
+  /usr/include/boost/date_time/posix_time/ptime.hpp \
+  /usr/include/boost/date_time/posix_time/posix_time_system.hpp \
+  /usr/include/boost/date_time/posix_time/posix_time_config.hpp \
+  /usr/include/boost/date_time/time_duration.hpp \
+  /usr/include/boost/operators.hpp \
+  /usr/include/boost/date_time/time_defs.hpp \
+  /usr/include/boost/date_time/special_defs.hpp \
+  /usr/include/boost/date_time/time_resolution_traits.hpp \
+  /usr/include/boost/date_time/int_adapter.hpp \
+  /usr/include/boost/date_time/gregorian/gregorian_types.hpp \
+  /usr/include/boost/date_time/date.hpp \
+  /usr/include/boost/date_time/year_month_day.hpp \
+  /usr/include/boost/date_time/period.hpp \
+  /usr/include/boost/date_time/gregorian/greg_calendar.hpp \
+  /usr/include/boost/date_time/gregorian/greg_weekday.hpp \
+  /usr/include/boost/date_time/constrained_value.hpp \
+  /usr/include/boost/date_time/date_defs.hpp \
+  /usr/include/boost/date_time/gregorian/greg_day_of_year.hpp \
+  /usr/include/boost/date_time/gregorian_calendar.hpp \
+  /usr/include/boost/date_time/gregorian_calendar.ipp \
+  /usr/include/boost/date_time/gregorian/greg_ymd.hpp \
+  /usr/include/boost/date_time/gregorian/greg_day.hpp \
+  /usr/include/boost/date_time/gregorian/greg_year.hpp \
+  /usr/include/boost/date_time/gregorian/greg_month.hpp \
+  /usr/include/boost/date_time/gregorian/greg_duration.hpp \
+  /usr/include/boost/date_time/date_duration.hpp \
+  /usr/include/boost/date_time/date_duration_types.hpp \
+  /usr/include/boost/date_time/gregorian/greg_duration_types.hpp \
+  /usr/include/boost/date_time/gregorian/greg_date.hpp \
+  /usr/include/boost/date_time/adjust_functors.hpp \
+  /usr/include/boost/date_time/wrapping_int.hpp \
+  /usr/include/boost/date_time/date_generators.hpp \
+  /usr/include/boost/date_time/date_clock_device.hpp \
+  /usr/include/boost/date_time/date_iterator.hpp \
+  /usr/include/boost/date_time/time_system_split.hpp \
+  /usr/include/boost/date_time/time_system_counted.hpp \
+  /usr/include/boost/date_time/time.hpp \
+  /usr/include/boost/date_time/posix_time/posix_time_duration.hpp \
+  /usr/include/boost/interprocess/sync/detail/common_algorithms.hpp \
+  /usr/include/boost/interprocess/sync/spin/wait.hpp \
+  /usr/include/boost/interprocess/sync/detail/locks.hpp \
+  /usr/local/include/pcl-1.12/pcl/io/impl/pcd_io.hpp \
+  /usr/include/boost/algorithm/string/trim.hpp \
+  /usr/include/boost/algorithm/string/detail/trim.hpp \
+  /usr/include/boost/algorithm/string/classification.hpp \
+  /usr/include/boost/algorithm/string/detail/classification.hpp \
+  /usr/include/boost/algorithm/string/predicate_facade.hpp \
+  /usr/local/include/pcl-1.12/pcl/io/low_level_io.h \
+  /usr/include/aarch64-linux-gnu/sys/mman.h \
+  /usr/include/aarch64-linux-gnu/bits/mman.h \
+  /usr/include/aarch64-linux-gnu/bits/mman-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/mman-shared.h \
+  /usr/include/aarch64-linux-gnu/sys/fcntl.h \
+  /usr/local/include/pcl-1.12/pcl/io/lzf.h \
+  /usr/local/include/pcl-1.12/pcl/filters/statistical_outlier_removal.h \
+  /usr/local/include/pcl-1.12/pcl/filters/filter_indices.h \
+  /usr/local/include/pcl-1.12/pcl/filters/filter.h \
+  /usr/local/include/pcl-1.12/pcl/search/search.h \
+  /usr/local/include/pcl-1.12/pcl/visualization/cloud_viewer.h
 
 CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/uniLoggerMain/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -3606,6 +3732,168 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
   /usr/local/cuda/include/cuda_gl_interop.h
 
 
+/usr/local/include/pcl-1.12/pcl/visualization/cloud_viewer.h:
+
+/usr/local/include/pcl-1.12/pcl/search/search.h:
+
+/usr/local/include/pcl-1.12/pcl/filters/statistical_outlier_removal.h:
+
+/usr/local/include/pcl-1.12/pcl/io/lzf.h:
+
+/usr/include/aarch64-linux-gnu/sys/fcntl.h:
+
+/usr/include/aarch64-linux-gnu/bits/mman-linux.h:
+
+/usr/include/aarch64-linux-gnu/bits/mman.h:
+
+/usr/include/aarch64-linux-gnu/sys/mman.h:
+
+/usr/include/boost/algorithm/string/detail/classification.hpp:
+
+/usr/include/boost/algorithm/string/trim.hpp:
+
+/usr/include/boost/interprocess/sync/spin/wait.hpp:
+
+/usr/include/boost/interprocess/sync/detail/common_algorithms.hpp:
+
+/usr/include/boost/date_time/posix_time/posix_time_duration.hpp:
+
+/usr/include/boost/date_time/date_iterator.hpp:
+
+/usr/include/boost/date_time/date_clock_device.hpp:
+
+/usr/include/boost/date_time/date_generators.hpp:
+
+/usr/include/boost/date_time/wrapping_int.hpp:
+
+/usr/include/boost/date_time/adjust_functors.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_date.hpp:
+
+/usr/include/boost/date_time/date_duration_types.hpp:
+
+/usr/include/boost/date_time/date_duration.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_duration.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_month.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_day.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_ymd.hpp:
+
+/usr/include/boost/date_time/gregorian_calendar.ipp:
+
+/usr/include/boost/date_time/gregorian_calendar.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_day_of_year.hpp:
+
+/usr/include/boost/date_time/date_defs.hpp:
+
+/usr/include/boost/date_time/constrained_value.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_weekday.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_calendar.hpp:
+
+/usr/include/boost/date_time/int_adapter.hpp:
+
+/usr/include/boost/date_time/special_defs.hpp:
+
+/usr/include/boost/operators.hpp:
+
+/usr/include/boost/date_time/posix_time/posix_time_config.hpp:
+
+/usr/include/boost/date_time/posix_time/posix_time_system.hpp:
+
+/usr/include/boost/date_time/filetime_functions.hpp:
+
+/usr/include/boost/date_time/locale_config.hpp:
+
+/usr/include/boost/date_time/compiler_config.hpp:
+
+/usr/include/boost/interprocess/detail/posix_time_types_wrk.hpp:
+
+/usr/include/boost/date_time/gregorian/greg_year.hpp:
+
+/usr/include/boost/interprocess/streams/bufferstream.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/dirent.h:
+
+/usr/include/dirent.h:
+
+/usr/include/aarch64-linux-gnu/sys/stat.h:
+
+/usr/include/aarch64-linux-gnu/bits/fcntl2.h:
+
+/usr/include/aarch64-linux-gnu/bits/stat.h:
+
+/usr/include/linux/falloc.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/fcntl.h:
+
+/usr/include/boost/interprocess/detail/std_fwd.hpp:
+
+/usr/include/boost/interprocess/interprocess_fwd.hpp:
+
+/usr/include/boost/interprocess/permissions.hpp:
+
+/usr/include/boost/interprocess/detail/os_file_functions.hpp:
+
+/usr/include/boost/interprocess/detail/config_end.hpp:
+
+/usr/include/boost/interprocess/exceptions.hpp:
+
+/usr/include/boost/interprocess/detail/workaround.hpp:
+
+/usr/include/boost/algorithm/string/detail/predicate.hpp:
+
+/usr/include/boost/algorithm/string/finder.hpp:
+
+/usr/include/boost/algorithm/string/find.hpp:
+
+/usr/include/boost/algorithm/string/compare.hpp:
+
+/usr/include/boost/range/detail/str_types.hpp:
+
+/usr/include/boost/algorithm/string/config.hpp:
+
+/usr/include/boost/numeric/conversion/detail/numeric_cast_traits.hpp:
+
+/usr/include/boost/numeric/conversion/detail/bounds.hpp:
+
+/usr/include/boost/config/no_tr1/cmath.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/times.hpp:
+
+/usr/include/boost/mpl/times.hpp:
+
+/usr/include/boost/numeric/conversion/detail/is_subranged.hpp:
+
+/usr/include/boost/numeric/conversion/udt_builtin_mixture_enum.hpp:
+
+/usr/include/boost/numeric/conversion/detail/udt_builtin_mixture.hpp:
+
+/usr/include/boost/numeric/conversion/sign_mixture_enum.hpp:
+
+/usr/include/boost/numeric/conversion/detail/sign_mixture.hpp:
+
+/usr/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
+
+/usr/include/boost/mpl/equal_to.hpp:
+
+/usr/include/boost/numeric/conversion/detail/conversion_traits.hpp:
+
+/usr/include/boost/numeric/conversion/converter.hpp:
+
+/usr/include/boost/numeric/conversion/cast.hpp:
+
+/usr/local/include/pcl-1.12/pcl/io/pcd_io.h:
+
 /usr/local/cuda/include/cuda_gl_interop.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h:
@@ -3662,6 +3950,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/vtk-6.3/vtkProperty2D.h:
 
+/usr/include/boost/date_time/microsec_time_clock.hpp:
+
 /usr/include/vtk-6.3/vtkSphereSource.h:
 
 /usr/include/vtk-6.3/vtkMathConfigure.h:
@@ -3677,6 +3967,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/vtk-6.3/vtkDataSet.h:
 
 /usr/include/vtk-6.3/vtkPointSet.h:
+
+/usr/include/boost/algorithm/string/classification.hpp:
 
 /usr/include/vtk-6.3/vtkPolyDataAlgorithm.h:
 
@@ -3902,6 +4194,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/config/detail/select_stdlib_config.hpp:
 
+/usr/include/boost/numeric/conversion/bounds.hpp:
+
 /usr/include/boost/iterator.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/select.h:
@@ -3909,6 +4203,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/variant/detail/backup_holder.hpp:
 
 /usr/include/boost/config/user.hpp:
+
+/usr/include/boost/date_time/period.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/__FILE.h:
 
@@ -3978,9 +4274,13 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/mpl/identity.hpp:
 
+/usr/include/boost/date_time/date.hpp:
+
 /usr/local/include/eigen3/Eigen/src/LU/Determinant.h:
 
 /usr/include/boost/iterator/iterator_categories.hpp:
+
+/usr/include/boost/date_time/time_defs.hpp:
 
 /usr/local/include/eigen3/Eigen/src/misc/Image.h:
 
@@ -4008,6 +4308,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/c++/7/bits/exception_defines.h:
 
+/usr/include/boost/numeric/conversion/detail/int_float_mixture.hpp:
+
 /usr/include/boost/optional/detail/optional_reference_spec.hpp:
 
 /usr/local/include/eigen3/Eigen/Jacobi:
@@ -4029,6 +4331,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/c++/7/string_view:
 
 /usr/local/include/eigen3/Eigen/src/StlSupport/StdVector.h:
+
+/usr/include/boost/date_time/time_resolution_traits.hpp:
 
 /usr/include/boost/range/size_type.hpp:
 
@@ -4068,7 +4372,11 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/type_traits/is_rvalue_reference.hpp:
 
+/usr/include/boost/range/as_literal.hpp:
+
 /usr/local/include/eigen3/Eigen/src/Householder/BlockHouseholder.h:
+
+/usr/include/boost/date_time/gregorian/greg_duration_types.hpp:
 
 /usr/local/include/eigen3/Eigen/src/Core/CoreIterators.h:
 
@@ -4115,6 +4423,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/preprocessor/arithmetic/add.hpp:
 
 /usr/local/include/eigen3/Eigen/src/Core/products/Parallelizer.h:
+
+/usr/include/boost/numeric/conversion/converter_policies.hpp:
 
 /usr/local/include/eigen3/Eigen/src/Core/SelfAdjointView.h:
 
@@ -4172,6 +4482,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/local/include/eigen3/Eigen/src/Core/ReturnByValue.h:
 
+/usr/include/boost/algorithm/string/predicate.hpp:
+
 /usr/local/include/pcl-1.12/pcl/type_traits.h:
 
 /usr/include/boost/mpl/aux_/insert_range_impl.hpp:
@@ -4191,6 +4503,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/vtk-6.3/vtkTypedDataArray.h:
 
 /usr/include/boost/mpl/aux_/inserter_algorithm.hpp:
+
+/usr/include/boost/date_time/year_month_day.hpp:
 
 /usr/include/boost/mpl/vector/vector10.hpp:
 
@@ -4226,6 +4540,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/predef/compiler/tendra.h:
 
+/usr/include/boost/algorithm/string/detail/finder.hpp:
+
 /usr/include/boost/type_traits/has_trivial_move_assign.hpp:
 
 /usr/local/include/eigen3/Eigen/src/Core/EigenBase.h:
@@ -4239,6 +4555,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/local/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/arch/NEON/TypeCasting.h:
+
+/usr/local/include/pcl-1.12/pcl/filters/filter_indices.h:
 
 /usr/local/cuda/include/surface_types.h:
 
@@ -4285,6 +4603,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/c++/7/bits/shared_ptr_atomic.h:
 
 /usr/include/boost/mpl/apply.hpp:
+
+/usr/include/boost/date_time/time.hpp:
 
 /usr/include/boost/predef/compiler/iar.h:
 
@@ -4369,6 +4689,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/local/include/eigen3/Eigen/src/LU/InverseImpl.h:
 
 /usr/include/errno.h:
+
+/usr/local/include/pcl-1.12/pcl/filters/filter.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
 
@@ -4474,6 +4796,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/function_equal.hpp:
 
+/usr/include/boost/algorithm/string/constants.hpp:
+
 /usr/include/aarch64-linux-gnu/c++/7/bits/c++locale.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/util/Meta.h:
@@ -4493,6 +4817,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/c++/7/bits/locale_classes.h:
 
 /usr/include/boost/mpl/aux_/config/adl.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/mman-shared.h:
 
 /usr/include/features.h:
 
@@ -4519,6 +4845,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/local/include/pcl-1.12/pcl/pcl_base.h:
 
 /usr/include/c++/7/bits/stl_tempbuf.h:
+
+/usr/local/include/pcl-1.12/pcl/io/impl/pcd_io.hpp:
 
 /usr/include/boost/mpl/deref.hpp:
 
@@ -4559,6 +4887,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/preprocessor/comma_if.hpp:
 
 /usr/local/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h:
+
+/usr/include/boost/numeric/conversion/detail/meta.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h:
 
@@ -4603,6 +4933,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/aarch64-linux-gnu/asm/types.h:
 
 /usr/include/boost/preprocessor/repetition/enum.hpp:
+
+/usr/include/boost/date_time/time_clock.hpp:
 
 /usr/include/vtk-6.3/vtkTextProperty.h:
 
@@ -4664,11 +4996,15 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/predef/hardware/simd/arm/versions.h:
 
+/usr/include/boost/interprocess/detail/config_begin.hpp:
+
 /usr/include/boost/mpl/aux_/preprocessor/default_params.hpp:
 
 /usr/include/vtk-6.3/vtkABI.h:
 
 /usr/local/cuda/include/driver_functions.h:
+
+/usr/include/boost/interprocess/sync/detail/locks.hpp:
 
 /usr/local/include/pcl-1.12/pcl/common/impl/norms.hpp:
 
@@ -4922,6 +5258,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h:
 
+/usr/include/boost/numeric/conversion/conversion_traits.hpp:
+
 /usr/include/boost/type_traits/type_with_alignment.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h:
@@ -5134,6 +5472,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/type_traits/add_pointer.hpp:
 
+/usr/include/boost/interprocess/sync/file_lock.hpp:
+
 /usr/include/boost/predef/compiler.h:
 
 /usr/include/opencv4/opencv2/flann/matrix.h:
@@ -5222,6 +5562,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/GL/freeglut_std.h:
 
+/usr/include/boost/interprocess/detail/os_thread_functions.hpp:
+
 /usr/include/boost/mpl/int_fwd.hpp:
 
 /usr/local/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
@@ -5255,6 +5597,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/lib/gcc/aarch64-linux-gnu/7/include-fixed/syslimits.h:
 
 /usr/include/c++/7/bits/invoke.h:
+
+/usr/include/boost/algorithm/string/predicate_facade.hpp:
 
 /usr/include/boost/predef/library/c/zos.h:
 
@@ -5357,6 +5701,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/7/iostream:
+
+/usr/include/aarch64-linux-gnu/bits/fcntl-linux.h:
 
 /usr/include/opencv4/opencv2/core/saturate.hpp:
 
@@ -5670,6 +6016,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/mpl/aux_/advance_forward.hpp:
 
+/usr/include/boost/date_time/time_system_counted.hpp:
+
 /usr/include/boost/mpl/aux_/arithmetic_op.hpp:
 
 /usr/include/vtk-6.3/vtkUnicodeString.h:
@@ -5702,9 +6050,13 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/preprocessor/enum_shifted_params.hpp:
 
+/usr/include/boost/numeric/conversion/numeric_cast_traits.hpp:
+
 /usr/include/boost/preprocessor/repetition/enum_params.hpp:
 
 /usr/include/boost/preprocessor/repetition/enum_trailing_params.hpp:
+
+/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp:
 
 /usr/include/boost/mpl/aux_/msvc_never_true.hpp:
 
@@ -5761,6 +6113,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/preprocessor/seq/size.hpp:
 
 /usr/local/include/pcl-1.12/pcl/exceptions.h:
+
+/usr/include/boost/numeric/conversion/detail/converter.hpp:
 
 /usr/include/boost/current_function.hpp:
 
@@ -5827,6 +6181,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/mpl/sequence_tag.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp:
+
+/usr/include/boost/date_time/c_time.hpp:
 
 /usr/include/boost/mpl/sequence_tag_fwd.hpp:
 
@@ -6022,6 +6378,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/bind/bind_mf_cc.hpp:
 
+/usr/include/boost/mpl/multiplies.hpp:
+
 /usr/include/boost/predef/os/ios.h:
 
 /usr/include/boost/cstdint.hpp:
@@ -6031,6 +6389,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/noncopyable.hpp:
 
 /usr/include/boost/cerrno.hpp:
+
+/usr/include/boost/algorithm/string/detail/trim.hpp:
 
 /usr/include/boost/config/abi_prefix.hpp:
 
@@ -6101,6 +6461,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/smart_ptr/shared_ptr.hpp:
 
 /usr/include/boost/config/no_tr1/memory.hpp:
+
+/usr/include/boost/date_time/posix_time/ptime.hpp:
 
 /usr/include/boost/throw_exception.hpp:
 
@@ -6304,6 +6666,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/predef/os/cygwin.h:
 
+/usr/include/aarch64-linux-gnu/bits/fcntl.h:
+
 /usr/include/c++/7/cctype:
 
 /usr/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp:
@@ -6379,6 +6743,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/type_traits/has_nothrow_constructor.hpp:
 
 /usr/include/boost/filesystem/fstream.hpp:
+
+/usr/include/boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp:
 
 /usr/include/boost/type_traits/is_base_and_derived.hpp:
 
@@ -6626,6 +6992,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/vtk-6.3/vtkAtomic.h:
 
+/usr/include/boost/date_time/time_system_split.hpp:
+
 /usr/local/include/eigen3/Eigen/src/Core/util/StaticAssert.h:
 
 /usr/include/vtk-6.3/vtkAtomicTypeConcepts.h:
@@ -6639,6 +7007,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/vtk-6.3/vtkWeakPointerBase.h:
 
 /usr/include/vtk-6.3/vtkTypeTraits.h:
+
+/usr/include/boost/interprocess/errors.hpp:
 
 /usr/include/vtk-6.3/vtkTypedDataArrayIterator.h:
 
@@ -6710,6 +7080,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 
 /usr/include/boost/type_index/stl_type_index.hpp:
 
+/usr/include/boost/date_time/time_duration.hpp:
+
 /usr/include/aarch64-linux-gnu/bits/sigthread.h:
 
 /usr/include/boost/type_traits/is_destructible.hpp:
@@ -6725,6 +7097,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/type_traits/is_union.hpp:
 
 /usr/include/boost/preprocessor/iteration/detail/bounds/upper1.hpp:
+
+/usr/local/include/pcl-1.12/pcl/io/file_io.h:
 
 /usr/include/boost/function/function_fwd.hpp:
 
@@ -6757,6 +7131,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/function/function_template.hpp:
 
 /usr/include/boost/detail/no_exceptions_support.hpp:
+
+/usr/include/boost/date_time/gregorian/gregorian_types.hpp:
 
 /usr/include/opencv4/opencv2/flann/dynamic_bitset.h:
 
@@ -6869,6 +7245,8 @@ CMakeFiles/uniLog.dir/src/main.cpp.o: /home/user/repos/intern_patrick_schuurman/
 /usr/include/boost/move/detail/type_traits.hpp:
 
 /usr/include/boost/move/detail/iterator_traits.hpp:
+
+/usr/local/include/pcl-1.12/pcl/io/low_level_io.h:
 
 /usr/include/boost/move/algorithm.hpp:
 

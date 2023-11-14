@@ -56,6 +56,10 @@ bool beginSvoToPcl = false;
 bool beginTrackPosition = false;
 bool beginSpatialMapping = false;
 bool beginTestWindow = false;
+bool beginPclFilter = false;
+bool beginPclViewer = false;
+bool beginPclFilterCompare = false;
+
 
 
 // Create a ZED camera called unilog.
@@ -80,7 +84,7 @@ int main(int argc, char **argv) //  | argv[0]: run command | argv[1]: Function |
         // When two arguments are given and SVO function: Return "To less arguments" and exit program. (SVO functions need a path as third argument.)
         // Else: run command.
         case 2:
-            if (string(argv[1]) == "-r" || string(argv[1]) == "--record" || string(argv[1]) == "-p" || string(argv[1]) == "--play" || string(argv[1]) == "-stp" || string(argv[1]) == "--svoToPcl" || string(argv[1]) == "-sm" || string(argv[1]) == "--spatialMapping")
+            if (string(argv[1]) == "-r" || string(argv[1]) == "--record" || string(argv[1]) == "-p" || string(argv[1]) == "--play" || string(argv[1]) == "-stp" || string(argv[1]) == "--svoToPcl" || string(argv[1]) == "-sm" || string(argv[1]) == "--spatialMapping" || string(argv[1]) == "-pv" || string(argv[1]) == "--pclViewer" || string(argv[1]) == "-pf" || string(argv[1]) == "--pclFilter" || string(argv[1]) == "-pfc" || string(argv[1]) == "--pclfilterCompare")
             {
                 cout << "[Usage] To less arguments (2). " << endl;
                 cout << "[Usage] SVOPath should be given as third argument." << endl;
@@ -92,7 +96,7 @@ int main(int argc, char **argv) //  | argv[0]: run command | argv[1]: Function |
         // When three arguments are given and SVO function: run command. (SVO functions need a path as third argument.)
         // Else: return "to many arguments and exit program."
         case 3:
-            if (string(argv[1]) == "-r" || string(argv[1]) == "--record" || string(argv[1]) == "-p" || string(argv[1]) == "--play" || string(argv[1]) == "-stp" || string(argv[1]) == "--svoToPcl" || string(argv[1]) == "-sm" || string(argv[1]) == "--spatialMapping")
+            if (string(argv[1]) == "-r" || string(argv[1]) == "--record" || string(argv[1]) == "-p" || string(argv[1]) == "--play" || string(argv[1]) == "-stp" || string(argv[1]) == "--svoToPcl" || string(argv[1]) == "-sm" || string(argv[1]) == "--spatialMapping" || string(argv[1]) == "-pv" || string(argv[1]) == "--pclViewer" || string(argv[1]) == "-pf" || string(argv[1]) == "--pclFilter" || string(argv[1]) == "-pfc" || string(argv[1]) == "--pclfilterCompare")
             {
                 break;
             }
@@ -177,6 +181,21 @@ int main(int argc, char **argv) //  | argv[0]: run command | argv[1]: Function |
     {
         cout << "\n[Dummy] In function testWindow" << endl;
         beginTestWindow = true;
+    }
+    else if (string(argv[1]) == "-pf" || string(argv[1]) == "--pclFilter") // filter single pointcloud
+    {
+        cout << "\n[Dummy] In function filterPointcloud" << endl;
+        beginPclFilter = true;
+    }
+    else if (string(argv[1]) == "-pv" || string(argv[1]) == "--pclViewer") // viewer single pointcloud
+    {
+        cout << "\n[Dummy] In function pclViewer" << endl;
+        beginPclViewer = true;
+    }
+    else if (string(argv[1]) == "-pfc" || string(argv[1]) == "--pclfilterCompare") // viewer single pointcloud
+    {
+        cout << "\n[Dummy] In function pclViewer" << endl;
+        beginPclFilterCompare = true;
     }
     else
     {
@@ -265,11 +284,41 @@ int main(int argc, char **argv) //  | argv[0]: run command | argv[1]: Function |
     {
         unilog.openCamera(); // Open the ZED camera.
 
-        if(unilog.testWindow()) // start spatial mapping and return true when done.
+        if(unilog.testWindow()) // start testwindow and return true when done.
         {
             cout << "[Test Window] Test window done." << endl;
         }
         // cout << "\n[Dummy] in the if statement for test window." << endl;
+    }
+
+
+    if (beginPclFilter)
+    {
+        if(unilog.pclFilter(argv[2])) // start pcl filter and return true when done.
+        {
+            cout << "[PCL Filter] Filter done." << endl;
+        }
+        // cout << "\n[Dummy] in the if statement for filter pcl." << endl;
+    }
+    
+    
+    if (beginPclViewer)
+    {
+        if(unilog.pclViewer(argv[2])) // start pcl viewer and return true when done.
+        {
+            cout << "[PCL Viewer] Viewer done." << endl;
+        }
+        // cout << "\n[Dummy] in the if statement for view pcl." << endl;
+    }
+
+
+    if (beginPclFilterCompare)
+    {
+        if(unilog.pclFilterCompare(argv[2])) // start pcl filter compare and return true when done.
+        {
+            cout << "[PCL Viewer] Compare done." << endl;
+        }
+        // cout << "\n[Dummy] in the if statement for view pcl." << endl;
     }
 
 

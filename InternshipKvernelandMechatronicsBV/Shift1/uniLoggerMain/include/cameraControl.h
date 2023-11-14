@@ -100,15 +100,23 @@ public:
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///     Side Functions     //////////////////////////////////////////////////////////////////////////////////
 
+    bool pclFilter(char *filePath);
+    bool pclViewer(char *filePath);
+    bool pclFilterCompare(char* filepath);
+    bool trackPosition(int count = 500);
+    bool createSpatialMap(char *filePath, int count= 500);
+    
+    bool testWindow(void);
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///     Info Functions     //////////////////////////////////////////////////////////////////////////////////
+    
     bool getSerialNumber(void);
     bool getImage(int count = 50);
     bool getDepth(int count = 50);
     bool getSensordata(void);
     bool printSensorData(void);
-    bool trackPosition(int count = 500);
-    bool createSpatialMap(char *filePath, int count= 500);
-    
-    bool testWindow(void);
 };
 
 

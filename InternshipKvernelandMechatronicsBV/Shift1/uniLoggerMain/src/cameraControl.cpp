@@ -38,6 +38,10 @@
 // PCL includes
 #include <pcl/common/common_headers.h>
 #include <pcl/visualization/pcl_visualizer.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
+#include <pcl/filters/statistical_outlier_removal.h>
+#include <pcl/visualization/cloud_viewer.h>
 
 // Sample includes
 #include <thread>
@@ -87,9 +91,12 @@ void cameraControl::help(void)
     cout << "[Usage] Type '-r' or '--record' to record svo. (svoOutputPath should be given)" << endl;
     cout << "[Usage] Type '-p' or '--play' to playback svo. (svoInputPath should be given)" << endl;
     cout << "[Usage] Type '-stp' or '--svoToPcl to transform svo to pcl pointcloud." << endl;
+    cout << "[Usage] Type '-pf' or '--pclFilter' to filter pointcloud." << endl;
     cout << endl;
     cout << "[Usage] Side Functions: " << endl;
     cout << "[Usage] Type '-h' or '--help' for a list of commands." << endl;
+    cout << "[Usage] Type '-pv' or '--pclViewer' to view pointcloud." << endl;
+    cout << "[Usage] Type '-pfc' or '--pclFilterCompare' to compare filtered pointcloud." << endl;
     cout << "[Usage] Type '-tp' or '--trackPosition to track ZED camera." << endl;    
     cout << "[Usage] Type '-sm' or '--spatialMapping to start spatial mapping." << endl;
     cout << "[Usage] Type '-tw' or '--testWindow to start test window." << endl;    
@@ -796,12 +803,12 @@ void cameraControl::stopThread(void)
 shared_ptr<pcl::visualization::PCLVisualizer> createRGBVisualizer(pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud) 
 {
     // Open 3D viewer and add point cloud
-    shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer("PCL ZED 3D Viewer"));
+    shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer("Pointcloud Viewer"));
     viewer->setBackgroundColor(0.12, 0.12, 0.12);
     pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(cloud);
     viewer->addPointCloud<pcl::PointXYZRGB>(cloud, rgb);
     viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1.5);
-    viewer->addCoordinateSystem(1.0);
+    //viewer->addCoordinateSystem(1.0);
     viewer->initCameraParameters();
     return (viewer);
 }
@@ -819,6 +826,155 @@ inline float convertColor(float colorIn)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///     Side Functions     //////////////////////////////////////////////////////////////////////////////////
+
+
+// Filter for a single pcl pointcloud
+bool cameraControl::pclFilter(char* filepath)
+{
+    cout << endl;
+    cout << "[PCL Filter] Setting up Filter.. " << endl;
+    string pointcloudFilePath(filepath);
+    
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZRGB>);
+
+    // Create pointcloud reader
+    pcl::PCDReader reader;
+    
+    // read pointcloud from given file.
+    reader.read<pcl::PointXYZRGB> (pointcloudFilePath, *cloud);
+
+    std::cerr << "Cloud before filtering: " << std::endl;
+    std::cerr << *cloud << std::endl;
+
+    // Create the filtering object
+    pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> sor;
+    sor.setInputCloud (cloud); // specify the pointcloud to filter
+    sor.setMeanK (50); // Number of neighbors to analyse fo each point
+    sor.setStddevMulThresh (1.0); // Standard deviation multiplier,
+    sor.filter (*cloud_filtered); // al point larger than sd of the mean distance to the query point whill be marked as outliers and removed.
+
+    std::cerr << "Cloud after filtering: " << std::endl;
+    std::cerr << *cloud_filtered << std::endl;
+
+    // write the inliers to disk
+    pcl::PCDWriter writer;
+    writer.write<pcl::PointXYZRGB> ("../../pcl/test_inliers.pcd", *cloud_filtered, false);
+
+    // reverse filter to get only the outliers
+    sor.setNegative (true);
+    sor.filter (*cloud_filtered);
+
+    // write the outliers to disk
+    writer.write<pcl::PointXYZRGB> ("../../pcl/test_outliers.pcd", *cloud_filtered, false);
+
+    return true;
+}
+
+
+// viewer for a single pcl pointcloud
+bool cameraControl::pclViewer(char* filepath)
+{
+    cout << endl;
+    cout << "[PCL Viewer] Setting up Viewer.. " << endl;
+
+    // Create pointcloud pointer
+    cout << "[Debug] Create pointer" << endl;
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+
+    // Load pointcloud in pointer
+    pcl::io::loadPCDFile(filepath, *cloud);
+
+    // Create Viewer
+    shared_ptr<pcl::visualization::PCLVisualizer> viewer = createRGBVisualizer(cloud);
+
+    // Set Viewer initial position
+    viewer->setCameraPosition(0, 0, 5,    0, 0, 1,   0, 1, 0);
+    viewer->setCameraClipDistances(0.1,1000);
+
+    while (!viewer->wasStopped())
+    {
+        viewer->spinOnce (100); // show pointcloud
+        usleep(10000);
+    }
+
+    // Close the viewer
+    viewer->close(); 
+
+    cout << endl;
+    cout << "[PCL Viewer] Clossing... " << endl;
+    return true;
+}
+
+
+// viewer to compaire unfiltered pointcloud with inliers and outliers.
+bool cameraControl::pclFilterCompare(char* filepath)
+{
+    cout << endl;
+    cout << "[PCL Filter Compare] Setting up Filter..." << endl;
+    string pointcloudFilePath(filepath);
+    
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudInliers (new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudOutliers (new pcl::PointCloud<pcl::PointXYZRGB>);
+
+    // Create pointcloud reader
+    pcl::PCDReader reader;
+    
+    // read pointcloud from given file.
+    reader.read<pcl::PointXYZRGB> (pointcloudFilePath, *cloud);
+    cout << "[PCL Filter Compare] Pointcloud read from filepath." << endl;
+
+    // Create the filtering object
+    pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> sor;
+    cout << "[PCL Filter Compare] StatisticalOutliersRemoval filter created." << endl;
+    sor.setInputCloud (cloud); // specify the pointcloud to filter
+    cout << "[PCL Filter Compare] SOR input cloud set." << endl;
+    sor.setMeanK (50); // Number of neighbors to analyse fo each point
+    sor.setStddevMulThresh (1.0); // Standard deviation multiplier,
+    cout << "[PCL Filter Compare] starting filter..." << endl;
+    sor.filter (*cloudInliers); // al point larger than sd of the mean distance to the query point whill be marked as outliers and removed.
+    cout << "[PCL Filter Compare] Cloud filterd." << endl;
+
+    // reverse filter to get only the outliers
+    sor.setNegative (true);
+    cout << "[PCL Filter Compare] starting filter..." << endl;
+    sor.filter (*cloudOutliers);
+    cout << "[PCL Filter Compare] outlier cloud created." << endl;
+
+    // Create Viewer
+    shared_ptr<pcl::visualization::PCLVisualizer> viewerOriginal = createRGBVisualizer(cloud);
+    shared_ptr<pcl::visualization::PCLVisualizer> viewerInliers = createRGBVisualizer(cloudInliers);
+    shared_ptr<pcl::visualization::PCLVisualizer> viewerOutliers = createRGBVisualizer(cloudOutliers);
+    cout << "[PCL Filter Compare] Viewers created." << endl;
+
+    // Set Viewer initial position
+    viewerOriginal->setCameraPosition(0, 0, 5,    0, 0, 1,   0, 1, 0);
+    viewerOriginal->setCameraClipDistances(0.1,1000);
+    viewerInliers->setCameraPosition(0, 0, 5,    0, 0, 1,   0, 1, 0);
+    viewerInliers->setCameraClipDistances(0.1,1000);
+    viewerOutliers->setCameraPosition(0, 0, 5,    0, 0, 1,   0, 1, 0);
+    viewerOutliers->setCameraClipDistances(0.1,1000);
+    cout << "[PCL Filter Compare] Viewer settings mate." << endl;
+
+    while (!viewerOriginal->wasStopped() && !viewerInliers->wasStopped() && !viewerOutliers->wasStopped())
+    {
+        viewerOriginal->spinOnce (100); // show pointcloud
+        viewerInliers->spinOnce (100); // show pointcloud
+        viewerOutliers->spinOnce (100); // show pointcloud
+        usleep(10000);
+    }
+
+    // Close the viewer
+    viewerOriginal->close();
+    viewerInliers->close(); 
+    viewerOutliers->close(); 
+    cout << "[PCL Filter Compare] Viewers closed" << endl;
+    cout << endl;
+    cout << "[PCL Viewer Compare] Clossing... " << endl;
+    return true;
+}
+
 
 // Enable positional Tracking.
 bool cameraControl::enableTracking(void)
