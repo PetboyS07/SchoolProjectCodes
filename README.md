@@ -10,5 +10,7 @@ Below is a list with the different project that can be found in this repo.
 
 ### Universeel logsysteem:
 Codes that I programmed for my internship.
+
 Code for shift 1 can be found [here](InternshipKvernelandMechatronicsBV/Shift1).
-Code for shfit 2 can be found [here](InternshipKvernelandMechatronicsBV/Shift2).
+
+Code for shift 2 can be found [here](InternshipKvernelandMechatronicsBV/Shift2).
