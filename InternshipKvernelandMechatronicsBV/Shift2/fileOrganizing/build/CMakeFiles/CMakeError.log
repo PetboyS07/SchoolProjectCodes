@@ -1,0 +1,87 @@
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-EY7HPK
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_fd25c/fast && /usr/bin/make  -f CMakeFiles/cmTC_fd25c.dir/build.make CMakeFiles/cmTC_fd25c.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-EY7HPK'
+Building C object CMakeFiles/cmTC_fd25c.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_fd25c.dir/CheckFunctionExists.c.o -c /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-EY7HPK/CheckFunctionExists.c
+Linking C executable cmTC_fd25c
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fd25c.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ CMakeFiles/cmTC_fd25c.dir/CheckFunctionExists.c.o -o cmTC_fd25c 
+CMakeFiles/cmTC_fd25c.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_fd25c.dir/build.make:98: recipe for target 'cmTC_fd25c' failed
+make[1]: *** [cmTC_fd25c] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-EY7HPK'
+Makefile:127: recipe for target 'cmTC_fd25c/fast' failed
+make: *** [cmTC_fd25c/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-h7h7IL
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5f0b7/fast && /usr/bin/make  -f CMakeFiles/cmTC_5f0b7.dir/build.make CMakeFiles/cmTC_5f0b7.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-h7h7IL'
+Building C object CMakeFiles/cmTC_5f0b7.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_5f0b7.dir/src.c.o -c /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-h7h7IL/src.c
+Linking C executable cmTC_5f0b7
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f0b7.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_5f0b7.dir/src.c.o -o cmTC_5f0b7 
+CMakeFiles/cmTC_5f0b7.dir/src.c.o: In function `main':
+src.c:(.text+0x48): undefined reference to `pthread_create'
+src.c:(.text+0x50): undefined reference to `pthread_detach'
+src.c:(.text+0x58): undefined reference to `pthread_cancel'
+src.c:(.text+0x64): undefined reference to `pthread_join'
+src.c:(.text+0x74): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_5f0b7.dir/build.make:98: recipe for target 'cmTC_5f0b7' failed
+make[1]: *** [cmTC_5f0b7] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-h7h7IL'
+Makefile:127: recipe for target 'cmTC_5f0b7/fast' failed
+make: *** [cmTC_5f0b7/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-nrc7QU
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_10b72/fast && /usr/bin/make  -f CMakeFiles/cmTC_10b72.dir/build.make CMakeFiles/cmTC_10b72.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-nrc7QU'
+Building C object CMakeFiles/cmTC_10b72.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_10b72.dir/CheckFunctionExists.c.o -c /home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-nrc7QU/CheckFunctionExists.c
+Linking C executable cmTC_10b72
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10b72.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_10b72.dir/CheckFunctionExists.c.o -o cmTC_10b72  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_10b72.dir/build.make:98: recipe for target 'cmTC_10b72' failed
+make[1]: *** [cmTC_10b72] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/CMakeScratch/TryCompile-nrc7QU'
+Makefile:127: recipe for target 'cmTC_10b72/fast' failed
+make: *** [cmTC_10b72/fast] Error 2
+
+
+
