@@ -1,0 +1,140 @@
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-IILbKB
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e106f/fast && /usr/bin/make  -f CMakeFiles/cmTC_e106f.dir/build.make CMakeFiles/cmTC_e106f.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-IILbKB'
+Building CXX object CMakeFiles/cmTC_e106f.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_e106f.dir/CheckFunctionExists.cxx.o -c /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-IILbKB/CheckFunctionExists.cxx
+Linking CXX executable cmTC_e106f
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e106f.dir/link.txt --verbose=1
+/usr/bin/c++  -DCHECK_FUNCTION_EXISTS=sgemm_ CMakeFiles/cmTC_e106f.dir/CheckFunctionExists.cxx.o -o cmTC_e106f 
+CMakeFiles/cmTC_e106f.dir/CheckFunctionExists.cxx.o: In function `main':
+CheckFunctionExists.cxx:(.text+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_e106f.dir/build.make:98: recipe for target 'cmTC_e106f' failed
+make[1]: *** [cmTC_e106f] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-IILbKB'
+Makefile:127: recipe for target 'cmTC_e106f/fast' failed
+make: *** [cmTC_e106f/fast] Error 2
+
+
+
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-fs5NeU
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d519b/fast && /usr/bin/make  -f CMakeFiles/cmTC_d519b.dir/build.make CMakeFiles/cmTC_d519b.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-fs5NeU'
+Building CXX object CMakeFiles/cmTC_d519b.dir/src.cxx.o
+/usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_d519b.dir/src.cxx.o -c /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-fs5NeU/src.cxx
+Linking CXX executable cmTC_d519b
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d519b.dir/link.txt --verbose=1
+/usr/bin/c++ CMakeFiles/cmTC_d519b.dir/src.cxx.o -o cmTC_d519b 
+CMakeFiles/cmTC_d519b.dir/src.cxx.o: In function `main':
+src.cxx:(.text+0x48): undefined reference to `pthread_create'
+src.cxx:(.text+0x50): undefined reference to `pthread_detach'
+src.cxx:(.text+0x58): undefined reference to `pthread_cancel'
+src.cxx:(.text+0x64): undefined reference to `pthread_join'
+src.cxx:(.text+0x74): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_d519b.dir/build.make:98: recipe for target 'cmTC_d519b' failed
+make[1]: *** [cmTC_d519b] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-fs5NeU'
+Makefile:127: recipe for target 'cmTC_d519b/fast' failed
+make: *** [cmTC_d519b/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-G8QsTu
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b9851/fast && /usr/bin/make  -f CMakeFiles/cmTC_b9851.dir/build.make CMakeFiles/cmTC_b9851.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-G8QsTu'
+Building CXX object CMakeFiles/cmTC_b9851.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_b9851.dir/CheckFunctionExists.cxx.o -c /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-G8QsTu/CheckFunctionExists.cxx
+Linking CXX executable cmTC_b9851
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9851.dir/link.txt --verbose=1
+/usr/bin/c++  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_b9851.dir/CheckFunctionExists.cxx.o -o cmTC_b9851  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_b9851.dir/build.make:98: recipe for target 'cmTC_b9851' failed
+make[1]: *** [cmTC_b9851] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-G8QsTu'
+Makefile:127: recipe for target 'cmTC_b9851/fast' failed
+make: *** [cmTC_b9851/fast] Error 2
+
+
+
+Determining if the include file filesystem exists failed with the following output:
+Change Dir: /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-ivxaEV
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ba3b9/fast && /usr/bin/make  -f CMakeFiles/cmTC_ba3b9.dir/build.make CMakeFiles/cmTC_ba3b9.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-ivxaEV'
+Building CXX object CMakeFiles/cmTC_ba3b9.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++   -O2  -std=gnu++1z -o CMakeFiles/cmTC_ba3b9.dir/CheckIncludeFile.cxx.o -c /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-ivxaEV/CheckIncludeFile.cxx
+/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-ivxaEV/CheckIncludeFile.cxx:1:10: fatal error: filesystem: No such file or directory
+ #include <filesystem>
+          ^~~~~~~~~~~~
+compilation terminated.
+CMakeFiles/cmTC_ba3b9.dir/build.make:77: recipe for target 'CMakeFiles/cmTC_ba3b9.dir/CheckIncludeFile.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_ba3b9.dir/CheckIncludeFile.cxx.o] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-ivxaEV'
+Makefile:127: recipe for target 'cmTC_ba3b9/fast' failed
+make: *** [cmTC_ba3b9/fast] Error 2
+
+
+
+Performing C++ SOURCE FILE Test CXX_FILESYSTEM_NO_LINK_NEEDED failed with the following compile output:
+Change Dir: /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-Oe2byN
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_106e3/fast && /usr/bin/make  -f CMakeFiles/cmTC_106e3.dir/build.make CMakeFiles/cmTC_106e3.dir/build
+make[1]: Entering directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-Oe2byN'
+Building CXX object CMakeFiles/cmTC_106e3.dir/src.cxx.o
+/usr/bin/c++ -DCXX_FILESYSTEM_NO_LINK_NEEDED  -O2  -std=gnu++1z -o CMakeFiles/cmTC_106e3.dir/src.cxx.o -c /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-Oe2byN/src.cxx
+Linking CXX executable cmTC_106e3
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_106e3.dir/link.txt --verbose=1
+/usr/bin/c++   -O2  CMakeFiles/cmTC_106e3.dir/src.cxx.o -o cmTC_106e3 
+CMakeFiles/cmTC_106e3.dir/src.cxx.o: In function `main':
+src.cxx:(.text.startup+0x28): undefined reference to `std::experimental::filesystem::v1::current_path[abi:cxx11]()'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_106e3.dir/build.make:98: recipe for target 'cmTC_106e3' failed
+make[1]: *** [cmTC_106e3] Error 1
+make[1]: Leaving directory '/home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles/CMakeScratch/TryCompile-Oe2byN'
+Makefile:127: recipe for target 'cmTC_106e3/fast' failed
+make: *** [cmTC_106e3/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+        #include <cstdlib>
+        #include <experimental/filesystem>
+
+        int main() {
+            auto cwd = std::experimental::filesystem::current_path();
+            printf("%s", cwd.c_str());
+            return EXIT_SUCCESS;
+        }
+    
+
