@@ -1,7 +1,13 @@
 CMakeFiles/uniLogger.dir/src/functionController.cpp.o: \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/functionController.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/src/functionController.cpp \
  /usr/include/stdc-predef.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/functionController.h \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/src/functionController.cpp \
+ /usr/include/stdc-predef.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/functionController.h \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/functionController.cpp.o.d
  /usr/local/zed/include/sl/Camera.hpp /usr/include/c++/7/algorithm \
  /usr/include/c++/7/utility \
  /usr/include/aarch64-linux-gnu/c++/7/bits/c++config.h \
@@ -1487,12 +1493,21 @@ CMakeFiles/uniLogger.dir/src/functionController.cpp.o: \
  /usr/include/vtk-6.3/vtkPolygon.h \
  /usr/include/vtk-6.3/vtkUnstructuredGrid.h \
  /usr/include/vtk-6.3/vtkUnstructuredGridBase.h \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/functionController.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/GLViewer.hpp \
  /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
  /usr/include/GL/freeglut.h /usr/include/GL/freeglut_std.h \
  /usr/include/GL/freeglut_ext.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/ZEDModel.hpp \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/utils.hpp \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/include/GLViewer.hpp \
+ /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
+ /usr/include/GL/freeglut.h /usr/include/GL/freeglut_std.h \
+ /usr/include/GL/freeglut_ext.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/ZEDModel.hpp \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/utils.hpp \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/functionController.cpp.o.d
  /usr/include/signal.h /usr/include/aarch64-linux-gnu/bits/signum.h \
  /usr/include/aarch64-linux-gnu/bits/signum-generic.h \
  /usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h \

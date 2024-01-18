@@ -16,10 +16,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///     Includes     ////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/include/dataViewer.hpp
 // Header Includes
 #include "logCout.h"
 
 // PCL Includes
+========
+// PCL includes
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/include/dataViewer.hpp
 #include <pcl/point_types.h>
 #include <pcl/common/common_headers.h>
 #include <pcl/visualization/pcl_visualizer.h>
@@ -47,7 +51,10 @@ class dataViewer
     std::shared_ptr<pcl::visualization::PCLVisualizer> pclViewer;
     pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> m_rgbHandler;
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr pclCloud;
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/include/dataViewer.hpp
     int svoNbFrame;
+========
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/include/dataViewer.hpp
 
   public:
     dataViewer(void);
@@ -56,6 +63,10 @@ class dataViewer
     void update(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud);
     bool stopped(void);
     void close(void);
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/include/dataViewer.hpp
+========
+
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/include/dataViewer.hpp
 };
 
 #endif //DATA_VIEWER_H

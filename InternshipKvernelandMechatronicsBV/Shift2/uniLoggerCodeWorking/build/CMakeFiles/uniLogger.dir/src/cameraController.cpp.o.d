@@ -1,8 +1,14 @@
 CMakeFiles/uniLogger.dir/src/cameraController.cpp.o: \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/cameraController.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/src/cameraController.cpp \
  /usr/include/stdc-predef.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/cameraController.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/logCout.h \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/src/cameraController.cpp \
+ /usr/include/stdc-predef.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/cameraController.h \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/cameraController.cpp.o.d
  /usr/include/stdio.h \
  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \

@@ -17,9 +17,13 @@
 ///     Includes     ////////////////////////////////////////////////////////////////////////////////////////
 
 // Header includes
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/include/dataProcessor.hpp
 #include <pcl/filters/statistical_outlier_removal.h>
 #include "radius_outlier_removal.hpp"
 #include "logCout.h"
+========
+#include "radius_outlier_removal.hpp"
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/include/dataProcessor.hpp
 
 // MISC Includes
 #include <iostream>

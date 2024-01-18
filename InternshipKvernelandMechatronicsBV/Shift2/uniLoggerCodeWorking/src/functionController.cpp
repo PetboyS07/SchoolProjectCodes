@@ -105,6 +105,7 @@ bool functionController::initCamera(void)
 	// set init parameters for the camera.
     cout << "[Camera Init] Set Init Parameters..." << endl;
     returned_state = ERROR_CODE::SUCCESS;
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/src/functionController.cpp
     // initParameters.sdk_verbose = false; // Enable verbose logging
     // initParameters.camera_resolution = RESOLUTION::HD1080;
     // initParameters.camera_fps = 1;
@@ -117,6 +118,20 @@ bool functionController::initCamera(void)
     // runtimeParameters.confidence_threshold = 40; // 50?
     // runtimeParameters.texture_confidence_threshold = 100;
     // runtimeParameters.enable_depth = true;
+========
+    initParameters.sdk_verbose = false; // Enable verbose logging
+    initParameters.camera_resolution = RESOLUTION::HD1080;
+    initParameters.camera_fps = 1;
+    initParameters.depth_mode = DEPTH_MODE::ULTRA;
+    initParameters.coordinate_units = UNIT::METER; // might be MILIMETER?
+    initParameters.coordinate_system = COORDINATE_SYSTEM::RIGHT_HANDED_Y_UP;
+    
+	// set runtime parameters for the camera.
+    cout << "[Camera Init] Set Runtime Parameters..." << endl;
+    runtimeParameters.confidence_threshold = 40; // 50?
+    runtimeParameters.texture_confidence_threshold = 100;
+    runtimeParameters.enable_depth = true;
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/src/functionController.cpp
 
     // set positional tracking params
     cout << "[Camera Init] Set Tracking Parameters..." << endl;

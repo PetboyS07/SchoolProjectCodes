@@ -57,10 +57,17 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 CMAKE_SOURCE_DIR = /home/user/repos/UniLogWorkspace/uniLoggerShift2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/user/repos/UniLogWorkspace/uniLoggerShift2/build
+========
+CMAKE_SOURCE_DIR = /home/user/repos/UniLogWorkspace/workingprogram
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/user/repos/UniLogWorkspace/workingprogram/build
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +94,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/repos/UniLogWorkspace/uniLoggerShift2/build/CMakeFiles /home/user/repos/UniLogWorkspace/uniLoggerShift2/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/repos/UniLogWorkspace/uniLoggerShift2/build/CMakeFiles 0
+========
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles /home/user/repos/UniLogWorkspace/workingprogram/build//CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/repos/UniLogWorkspace/workingprogram/build/CMakeFiles 0
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
 .PHONY : all
 
 # The main clean target
@@ -349,6 +362,7 @@ src/parseController.cpp.s:
 
 src/radius_outlier_removal.o: src/radius_outlier_removal.cpp.o
 .PHONY : src/radius_outlier_removal.o
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 
 # target to build an object file
 src/radius_outlier_removal.cpp.o:
@@ -378,22 +392,65 @@ src/threadUtilities.o: src/threadUtilities.cpp.o
 src/threadUtilities.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/threadUtilities.cpp.o
 .PHONY : src/threadUtilities.cpp.o
+========
 
-src/threadUtilities.i: src/threadUtilities.cpp.i
-.PHONY : src/threadUtilities.i
+# target to build an object file
+src/radius_outlier_removal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/radius_outlier_removal.cpp.o
+.PHONY : src/radius_outlier_removal.cpp.o
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
+
+src/radius_outlier_removal.i: src/radius_outlier_removal.cpp.i
+.PHONY : src/radius_outlier_removal.i
 
 # target to preprocess a source file
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 src/threadUtilities.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/threadUtilities.cpp.i
 .PHONY : src/threadUtilities.cpp.i
+========
+src/radius_outlier_removal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/radius_outlier_removal.cpp.i
+.PHONY : src/radius_outlier_removal.cpp.i
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
 
-src/threadUtilities.s: src/threadUtilities.cpp.s
-.PHONY : src/threadUtilities.s
+src/radius_outlier_removal.s: src/radius_outlier_removal.cpp.s
+.PHONY : src/radius_outlier_removal.s
 
 # target to generate assembly for a file
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 src/threadUtilities.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/threadUtilities.cpp.s
 .PHONY : src/threadUtilities.cpp.s
+========
+src/radius_outlier_removal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/radius_outlier_removal.cpp.s
+.PHONY : src/radius_outlier_removal.cpp.s
+
+src/thread_utilities.o: src/thread_utilities.cpp.o
+.PHONY : src/thread_utilities.o
+
+# target to build an object file
+src/thread_utilities.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/thread_utilities.cpp.o
+.PHONY : src/thread_utilities.cpp.o
+
+src/thread_utilities.i: src/thread_utilities.cpp.i
+.PHONY : src/thread_utilities.i
+
+# target to preprocess a source file
+src/thread_utilities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/thread_utilities.cpp.i
+.PHONY : src/thread_utilities.cpp.i
+
+src/thread_utilities.s: src/thread_utilities.cpp.s
+.PHONY : src/thread_utilities.s
+
+# target to generate assembly for a file
+src/thread_utilities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/uniLogger.dir/build.make CMakeFiles/uniLogger.dir/src/thread_utilities.cpp.s
+.PHONY : src/thread_utilities.cpp.s
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
 
 # Help Target
 help:
@@ -433,9 +490,15 @@ help:
 	@echo "... src/radius_outlier_removal.o"
 	@echo "... src/radius_outlier_removal.i"
 	@echo "... src/radius_outlier_removal.s"
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/Makefile
 	@echo "... src/threadUtilities.o"
 	@echo "... src/threadUtilities.i"
 	@echo "... src/threadUtilities.s"
+========
+	@echo "... src/thread_utilities.o"
+	@echo "... src/thread_utilities.i"
+	@echo "... src/thread_utilities.s"
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/Makefile
 .PHONY : help
 
 

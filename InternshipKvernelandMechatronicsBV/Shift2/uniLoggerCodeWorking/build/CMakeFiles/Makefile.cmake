@@ -7,7 +7,11 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/Makefile.cmake
   "/home/user/repos/UniLogWorkspace/uniLoggerShift2/CMakeLists.txt"
+========
+  "/home/user/repos/UniLogWorkspace/workingprogram/CMakeLists.txt"
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/Makefile.cmake
   "CMakeFiles/3.25.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.0/CMakeCUDACompiler.cmake"
   "CMakeFiles/3.25.0/CMakeCXXCompiler.cmake"

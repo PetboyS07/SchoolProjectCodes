@@ -1,7 +1,13 @@
 CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o: \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/src/GLViewer.cpp \
  /usr/include/stdc-predef.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/GLViewer.hpp \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/src/GLViewer.cpp \
+ /usr/include/stdc-predef.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/GLViewer.hpp \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o.d
  /usr/include/GL/glew.h /usr/lib/gcc/aarch64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/aarch64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
@@ -170,7 +176,11 @@ CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o: \
  /usr/include/c++/7/system_error \
  /usr/include/aarch64-linux-gnu/c++/7/bits/error_constants.h \
  /usr/include/c++/7/bits/std_mutex.h \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/ZEDModel.hpp \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/include/ZEDModel.hpp \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/GLViewer.cpp.o.d
  /usr/local/zed/include/sl/Camera.hpp /usr/include/c++/7/algorithm \
  /usr/include/c++/7/bits/stl_algo.h \
  /usr/include/c++/7/bits/algorithmfwd.h \

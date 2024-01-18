@@ -1,7 +1,14 @@
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/threadUtilities.cpp.o.d
 CMakeFiles/uniLogger.dir/src/threadUtilities.cpp.o: \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/src/threadUtilities.cpp \
  /usr/include/stdc-predef.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/threadUtilities.hpp \
+========
+CMakeFiles/uniLogger.dir/src/thread_utilities.cpp.o: \
+ /home/user/repos/UniLogWorkspace/workingprogram/src/thread_utilities.cpp \
+ /usr/include/stdc-predef.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/thread_utilities.hpp \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/thread_utilities.cpp.o.d
  /usr/include/c++/7/mutex /usr/include/c++/7/tuple \
  /usr/include/c++/7/utility \
  /usr/include/aarch64-linux-gnu/c++/7/bits/c++config.h \

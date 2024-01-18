@@ -1,8 +1,14 @@
 CMakeFiles/uniLogger.dir/src/parseController.cpp.o: \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/parseController.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/src/parseController.cpp \
  /usr/include/stdc-predef.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/parseController.h \
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/logCout.h \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/src/parseController.cpp \
+ /usr/include/stdc-predef.h \
+ /home/user/repos/UniLogWorkspace/workingprogram/include/parseController.h \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/parseController.cpp.o.d
  /usr/include/stdio.h \
  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \
@@ -141,7 +147,11 @@ CMakeFiles/uniLogger.dir/src/parseController.cpp.o: \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
  /usr/include/c++/7/bits/istream.tcc \
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/CMakeFiles/uniLogger.dir/src/parseController.cpp.o.d
  /home/user/repos/UniLogWorkspace/uniLoggerShift2/include/functionController.h \
+========
+ /home/user/repos/UniLogWorkspace/workingprogram/include/functionController.h \
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/CMakeFiles/uniLogger.dir/src/parseController.cpp.o.d
  /usr/local/zed/include/sl/Camera.hpp /usr/include/c++/7/algorithm \
  /usr/include/c++/7/utility /usr/include/c++/7/bits/stl_relops.h \
  /usr/include/c++/7/bits/stl_algo.h \

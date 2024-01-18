@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/cmake_install.cmake
 # Install script for directory: /home/user/repos/UniLogWorkspace/uniLoggerShift2
+========
+# Install script for directory: /home/user/repos/UniLogWorkspace/workingprogram
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/cmake_install.cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +48,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/cmake_install.cmake
   include("/home/user/repos/UniLogWorkspace/uniLoggerShift2/build/matplotplusplus/cmake_install.cmake")
+========
+  include("/home/user/repos/UniLogWorkspace/workingprogram/build/matplotplusplus/cmake_install.cmake")
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/cmake_install.cmake
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +63,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<<< HEAD:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerCodeWorking/build/cmake_install.cmake
 file(WRITE "/home/user/repos/UniLogWorkspace/uniLoggerShift2/build/${CMAKE_INSTALL_MANIFEST}"
+========
+file(WRITE "/home/user/repos/UniLogWorkspace/workingprogram/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>>> 71cccea26b3de34f671a0b0d3ea02f86ae34e0e1:InternshipKvernelandMechatronicsBV/Shift2/uniLoggerShift2/build/cmake_install.cmake
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
