@@ -1,3 +1,0 @@
-/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/uniLog.dir
-/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/edit_cache.dir
-/home/user/repos/UniLogWorkspace/fileOrganizing/build/CMakeFiles/rebuild_cache.dir
