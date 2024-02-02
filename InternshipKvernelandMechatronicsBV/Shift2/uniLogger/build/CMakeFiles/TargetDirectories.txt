@@ -1,0 +1,13 @@
+/home/user/repos/UniLogWorkspace/uniLogger/build/CMakeFiles/uniLogger.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/CMakeFiles/edit_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/CMakeFiles/rebuild_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/CMakeFiles/edit_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/CMakeFiles/rebuild_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/CMakeFiles/edit_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/CMakeFiles/rebuild_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/3rd_party/CMakeFiles/nodesoup.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/3rd_party/CMakeFiles/edit_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/3rd_party/CMakeFiles/rebuild_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/matplot/CMakeFiles/matplot.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/matplot/CMakeFiles/edit_cache.dir
+/home/user/repos/UniLogWorkspace/uniLogger/build/matplotplusplus/source/matplot/CMakeFiles/rebuild_cache.dir
